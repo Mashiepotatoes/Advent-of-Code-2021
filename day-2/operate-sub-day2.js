@@ -9,7 +9,6 @@ import { readFileSync } from 'fs';
 // if diretion = down/up, depth +/- value of index1
 // return depth x horizontal position
 
-
 let inputString = readFileSync('./input.txt', 'utf8', (err, data) => {
   if (err) throw err;
   return data;
@@ -18,4 +17,19 @@ let inputString = readFileSync('./input.txt', 'utf8', (err, data) => {
 const input = inputString.split('\n');
 const dirData = input.map(dir => dir.split(' '));
 
-console.log(dirData);
+let position = 0;
+let depth = 0;
+
+dirData.forEach(data => {
+  switch(data[0]) {
+    case 'forward':
+      position += parseInt(data[1], 10);
+    case 'up':
+      depth -= parseInt(data[1], 10);
+    case 'down':
+      depth += parseInt(data[1], 10);
+  };
+})
+
+console.log(position * depth);
+
