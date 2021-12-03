@@ -1,11 +1,10 @@
 import { readFileSync } from 'fs';
 
-// line-by-line parsing of txt file to get input
-// insert values into an array, convert each to integer.
-// create a var for state of true / false
+// Read txt file to get input
+// split string into an array, convert each to integer.
 // create counter
 // iterate through the array
-// check if value of the index before is lesser, if so, change state and +1, else skip
+// check if value of the index before is lesser, if so, counter +1
 // return counter
 
 
@@ -19,14 +18,10 @@ const inputIntegers = input.map(value => parseInt(value, 10))
 
 const measureDepth = (array) => {
   let counter = 0;
-  const state = false;
 
   array.forEach((depth, index) => {
     if ((depth) > array[index - 1]) {
-      state == true;
       counter += 1;
-    } else {
-      state == false;
     }
   })
 
