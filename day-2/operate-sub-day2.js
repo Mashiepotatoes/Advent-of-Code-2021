@@ -20,16 +20,29 @@ const dirData = input.map(dir => dir.split(' '));
 let position = 0;
 let depth = 0;
 
-dirData.forEach(data => {
-  switch(data[0]) {
-    case 'forward':
+const moveSub = (array) => {
+  array.forEach(data => {
+    // switch(data[0]) {
+    //   case 'forward':
+    //     position += parseInt(data[1], 10);
+    //   case 'up':
+    //     depth -= parseInt(data[1], 10);
+    //   case 'down':
+    //     depth += parseInt(data[1], 10);
+    // };
+
+    if (data[0] == 'forward') {
       position += parseInt(data[1], 10);
-    case 'up':
+    } else if (data[0] == 'up') {
       depth -= parseInt(data[1], 10);
-    case 'down':
+    } else if (data[0] == 'down') {
       depth += parseInt(data[1], 10);
-  };
-})
+    }
+  })
+  return position * depth;
+}
 
-console.log(position * depth);
+// console.log(moveSub([['forward', '2'], ['up', '2'], ['down', '3']])) // => 2
+//
 
+console.log(moveSub(dirData));
